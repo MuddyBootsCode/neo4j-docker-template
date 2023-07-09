@@ -26,10 +26,12 @@
   "scripts": {
     "dev": "",
     "test": "",
-    "start": "node index.js"
+    "start": "node index.js",
+    "seed": "node seed.js"
   },
   "dependencies": {
     "@apollo/server": "^4.7.5",
+    "@faker-js/faker": "^8.0.2",
     "@neo4j/graphql": "^3.23.1",
     "graphql": "^16.7.1",
     "neo4j-driver": "^5.10.0"
