@@ -23,12 +23,13 @@ sh dump.sh
 To start the application in development mode, run the following command:
 
 ```bash
-docker-compose up 
+docker-compose up
 ```
 
 Still working on importing data. Will get that done shortly.
 
 ## Environment Variables
+
 You only need one env file for both applications. Copy the `.env.example` file and rename it to `.env`.
 Then fill in the values for the variables. (Or get it from someone else). On docker run, it will be injected into
 both containers.

@@ -1,0 +1,23 @@
+{
+  "name": "neo4j-docker-template",
+  "version": "1.0.0",
+  "description": "To install npm dependencies, run the following command:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuddyBootsCode/neo4j-docker-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MuddyBootsCode/neo4j-docker-template/issues"
+  },
+  "homepage": "https://github.com/MuddyBootsCode/neo4j-docker-template#readme",
+  "devDependencies": {
+    "prettier": "3.0.0"
+  }
+}
