@@ -1,0 +1,63 @@
+version: '3'
+services:
+  # node js service for react app
+  npm_frontend:
+    image: node:18
+    container_name: project_frontend_${DOCKER_NAME}
+    volumes:
+      - ../ui:/var/www/html
+      - ./.env:/var/www/html/.env
+    working_dir: /var/www/html
+    command: bash docker-start.sh
+    #    command: npm run start
+    restart: unless-stopped
+    ports:
+      - ${DOCKER_FRONTEND_PORT}:3000
+    environment:
+      - IS_PRODUCTION=${IS_PRODUCTION}
+
+  #node js service for node app
+  npm_backend:
+    image: node:18
+    container_name: backend_${DOCKER_NAME}
+    volumes:
+      - ../api:/var/www/html
+      - ./.env:/var/www/html/.env
+    working_dir: /var/www/html
+    #    command: npm run dev
+    command: bash docker-start.sh
+    restart: unless-stopped
+    ports:
+      - ${DOCKER_BACKEND_PORT}:4000
+    depends_on:
+      - neo4j
+    links: ## connects neo4j to app container
+      - neo4j
+    environment:
+      - IS_PRODUCTION=${IS_PRODUCTION}
+
+
+  # based on https://thibaut-deveraux.medium.com/how-to-install-neo4j-with-docker-compose-36e3ba939af0
+  neo4j:
+    image: neo4j:5-enterprise
+    container_name: neo4j_${DOCKER_NAME}
+    restart: unless-stopped
+    ports:
+          - "7474:7474"
+          - "7687:7687"
+    volumes:
+      - ./neo4j_database:/data
+      - ./.data/neo4j/import:/import
+      - ./.data/neo4j/logs:/logs
+      - ./.data/neo4j/plugins:/plugins
+      - ./neo4j:/dump
+    environment:
+      # Raise memory limits
+      - NEO4J_AUTH=${NEO4J_USER}/${NEO4J_PASSWORD}
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      #      - NEO4J_dbms_memory_pagecache_size=1G
+      #      - NEO4J_dbms.memory.heap.initial_size=1G
+      #      - NEO4J_dbms_memory_heap_max__size=1G
+#      - NEO4J_ENCRYPTED=ENCRYPTION_OFF
+      - NEO4J_PLUGINS =["apoc", "graph-data-science"]
+      - NEO4J_dbms_security_procedures_unrestricted=apoc.*,gds.*
