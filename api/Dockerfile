@@ -1,4 +1,4 @@
-# Use the official Node.js 10 image as the base image
+# Use the official Node.js 18 image as the base image
 FROM node:18
 
 # Set the working directory
