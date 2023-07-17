@@ -1,4 +1,5 @@
 ## Getting Started
+**Navigate to the docker directory first** 
 
 To install npm dependencies, run the following command:
 
