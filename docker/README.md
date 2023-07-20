@@ -33,3 +33,6 @@ Still working on importing data. Will get that done shortly.
 You only need one env file for both applications. Copy the `.env.example` file and rename it to `.env`.
 Then fill in the values for the variables. (Or get it from someone else). On docker run, it will be injected into
 both containers.
+
+## Windows Users
+For users on Docker for Windows, beware code editors may default to setting End of Line (EOL) sequence to CRLF. You'll want to ensure that the docker-start.sh files found in the api and ui directory are both converted to LF to avoid errors while performing docker-compose up. 
