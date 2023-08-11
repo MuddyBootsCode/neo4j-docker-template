@@ -3,10 +3,17 @@ import { startStandaloneServer } from "@apollo/server/standalone";
 import { Neo4jGraphQL } from "@neo4j/graphql";
 import neo4j from "neo4j-driver";
 import { typeDefs } from "./graphql-schema.js";
+import "dotenv/config";
+
+console.log(
+  process.env.NEO4J_URI,
+  process.env.NEO4J_USER,
+  process.env.NEO4J_PASSWORD,
+);
 
 const driver = neo4j.driver(
-  process.env.NEO4J_URI || "bolt://localhost:7687",
-  neo4j.auth.basic(process.env.NEO4J_USER, process.env.NEORJ_PASSWORD),
+  "bolt://localhost:7687",
+  neo4j.auth.basic(process.env.NEO4J_USER, process.env.NEO4J_PASSWORD),
 );
 
 const neoSchema = new Neo4jGraphQL({ typeDefs, driver });

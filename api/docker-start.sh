@@ -5,5 +5,5 @@ if [[ "$IS_PRODUCTION" == "true" ]]; then
   npm run start
 else
   echo "Running as development"
-  npm run start
+  npm run dev
 fi
