@@ -45,10 +45,9 @@ services:
       - "7474:7474"
       - "7687:7687"
     volumes:
-      - ./neo4j_database:/data
+      - ./.data/neo4j/data:/data
       - ./.data/neo4j/import:/import
       - ./.data/neo4j/logs:/logs
-      #- ./.data/neo4j/plugins:/plugins
       - ./neo4j:/dump
     environment:
       # Raise memory limits
