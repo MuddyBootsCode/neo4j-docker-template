@@ -1,7 +1,8 @@
-.data
+data/*
 .DS_store
 .idea
 .env
 neo4j/*
 neo4j_database/*
 !neo4j/.gitkeep
+
